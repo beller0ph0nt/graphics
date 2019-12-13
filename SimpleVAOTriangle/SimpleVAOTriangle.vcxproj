@@ -151,7 +151,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\FragmentShader.cpp" />
     <ClCompile Include="Sources\Main.cpp" />
+    <ClCompile Include="Sources\Shader.cpp" />
+    <ClCompile Include="Sources\ShaderProgram.cpp" />
+    <ClCompile Include="Sources\VAORectangle.cpp" />
+    <ClCompile Include="Sources\VAOTriangle.cpp" />
+    <ClCompile Include="Sources\VertexShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\DefaultVertexShader.glsl">
@@ -165,6 +171,16 @@
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sources\FragmentShader.h" />
+    <ClInclude Include="Sources\Position.h" />
+    <ClInclude Include="Sources\Shader.h" />
+    <ClInclude Include="Sources\ShaderProgram.h" />
+    <ClInclude Include="Sources\VAORectangle.h" />
+    <ClInclude Include="Sources\VAOTriangle.h" />
+    <ClInclude Include="Sources\Vertex.h" />
+    <ClInclude Include="Sources\VertexShader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
