@@ -16,10 +16,10 @@ class VAORectangle
 	GLuint _vertexBufferObjectId;
 	GLuint _elementBufferObjectId;
 	array<Vertex, 4> _vertexes{
-		Vertex { 0.1f, -0.5f },
-		Vertex { 0.1f,  0.5f },
-		Vertex { 0.9f, -0.5f },
-		Vertex { 0.9f,  0.5f }
+		Vertex { -0.5f, -0.5f, 0.0f, 1.0f },
+		Vertex { -0.5f,  0.5f, 0.0f, 1.0f },
+		Vertex {  0.5f, -0.5f, 0.0f, 1.0f },
+		Vertex {  0.5f,  0.5f, 0.0f, 1.0f }
 	};
 	array<GLuint, 6> _indices{
 		0, 1, 3,

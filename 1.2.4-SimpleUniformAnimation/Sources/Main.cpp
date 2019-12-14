@@ -12,8 +12,7 @@
 #include <ShaderProgram.h>
 #include <FragmentShader.h>
 
-#include "VAOTriangle.h"
-//#include "VAORectangle.h"
+#include "VAORectangle.h"
 
 using namespace std;
 
@@ -57,17 +56,13 @@ int main(void)
 		glfwSetKeyCallback(window, keyCallback);
 		glfwSwapInterval(1);
 
-		ShaderProgram defaultProgram;
-/*
 		ShaderProgram customProgram(FragmentShader(
 			"#version 330 core\n"
 			"out vec4 fragColor;\n"
 			"uniform vec4 externColor;"
 			"void main() { fragColor = externColor; }\n"));
 		GLint uniformLocation = glGetUniformLocation(customProgram.GetId(), "externColor");
-*/
-		VAOTriangle triangle;
-//		VAORectangle rectangle;
+		VAORectangle rectangle;
 
 		glPointSize(5);
 		glClearColor(0.0f, 0.2f, 0.0f, 1.0f);
@@ -75,14 +70,11 @@ int main(void)
 		{
 			glClear(GL_COLOR_BUFFER_BIT);
 
-			defaultProgram.Use();
-			triangle.Draw();
-/*
 			customProgram.Use();
 			float time = static_cast<float>(glfwGetTime());
 			float redColor = sin(time) / 4.0f + 0.75f;
 			glUniform4f(uniformLocation, 0.0f, redColor, 0.0f, 1.0f);
-			rectangle.Draw();*/
+			rectangle.Draw();
 
 			glfwSwapBuffers(window);
 			glfwPollEvents();

@@ -2,25 +2,9 @@
 
 #include <GLFW/glfw3.h>
 
-using namespace std;
+#include "SimpleTriangle.h"
 
-class SimpleTriangle
-{
-	const float vertexes[3][2] = {
-		{ -0.5f, -0.5f },
-		{  0.0f,  0.5f },
-		{  0.5f, -0.5f }
-	};
-public:
-	void Draw()
-	{
-		glBegin(GL_TRIANGLES);
-		glVertex2fv(vertexes[0]);
-		glVertex2fv(vertexes[1]);
-		glVertex2fv(vertexes[2]);
-		glEnd();
-	}
-};
+using namespace std;
 
 int main(void)
 {
@@ -37,6 +21,7 @@ int main(void)
 	}
 
 	glfwMakeContextCurrent(window);
+	glfwSwapInterval(1);
 
 	cout << "glGetString: " << glGetString(GL_VERSION) << endl;
 	cout << "glfwGetVersionString: " << glfwGetVersionString() << endl;

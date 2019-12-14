@@ -15,9 +15,9 @@ class VAOTriangle
 	GLuint _vertexArrayObjectId;
 	GLuint _vertexBufferObjectId;
 	array<Vertex, 3> _vertexes{
-		Vertex { -0.9f, -0.5f },
-		Vertex { -0.5f,  0.5f },
-		Vertex { -0.1f, -0.5f }
+		Vertex { -0.5f, -0.5f, 0.0f, 1.0f },
+		Vertex {  0.0f,  0.5f, 0.0f, 1.0f },
+		Vertex {  0.5f, -0.5f, 0.0f, 1.0f }
 	};
 public:
 	VAOTriangle(GLuint attribIndex = 0);
