@@ -12,7 +12,7 @@
 #include <ShaderProgram.h>
 #include <FragmentShader.h>
 
-#include "VAORectangle.h"
+#include "VAOTriangle.h"
 
 using namespace std;
 
@@ -24,7 +24,7 @@ int main(void)
 
 		if (!glfwInit())
 			return -1;
-		window = glfwCreateWindow(640, 480, "1.2.4-SimpleUniformAnimation", NULL, NULL);
+		window = glfwCreateWindow(640, 480, "1.2.5-SimpleFragmentInterpolation", NULL, NULL);
 		if (!window)
 		{
 			glfwTerminate();
@@ -37,9 +37,12 @@ int main(void)
 		if (GLEW_OK != err)
 			cerr << "GLEW error: " << glewGetErrorString(err) << endl;
 
-		cout << "glGetString:          " << glGetString(GL_VERSION) << endl;
-		cout << "glfwGetVersionString: " << glfwGetVersionString() << endl;
-		cout << "glewGetString:        " << glewGetString(GLEW_VERSION) << endl;
+		cout << "glGetString:           " << glGetString(GL_VERSION) << endl;
+		cout << "glfwGetVersionString:  " << glfwGetVersionString() << endl;
+		cout << "glewGetString:         " << glewGetString(GLEW_VERSION) << endl;
+		int maxVertexAttributes;
+		glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &maxVertexAttributes);
+		cout << "GL_MAX_VERTEX_ATTRIBS: " << maxVertexAttributes << endl;
 		
 		auto keyCallback = [](GLFWwindow* window, int key, int scancode, int action, int mods)
 		{
@@ -56,13 +59,25 @@ int main(void)
 		glfwSetKeyCallback(window, keyCallback);
 		glfwSwapInterval(1);
 
-		ShaderProgram customProgram(FragmentShader(
+		VertexShader vertexShader(
 			"#version 330 core\n"
-			"out vec4 fragColor;\n"
-			"uniform vec4 externColor;"
-			"void main() { fragColor = externColor; }\n"));
-		GLint uniformLocation = glGetUniformLocation(customProgram.GetId(), "externColor");
-		VAORectangle rectangle;
+			"layout (location = 0) in vec4 position;\n"
+			"layout (location = 1) in vec4 color;\n"
+			"out vec4 fragColor;"
+			"void main()\n"
+			"{\n"
+			"	gl_Position = position;\n"
+			"	fragColor = color;\n"
+			"}\n"
+		);
+		FragmentShader fragmentShader(
+			"#version 330 core\n"
+			"in vec4 fragColor;\n"
+			"out vec4 FragColor;\n"
+			"void main() { FragColor = fragColor; }\n"
+		);
+		ShaderProgram defaultProgram(move(vertexShader), move(fragmentShader));
+		VAOTriangle triangle;
 
 		glPointSize(5);
 		glClearColor(0.0f, 0.2f, 0.0f, 1.0f);
@@ -70,11 +85,8 @@ int main(void)
 		{
 			glClear(GL_COLOR_BUFFER_BIT);
 
-			customProgram.Use();
-			float time = static_cast<float>(glfwGetTime());
-			float redColor = sin(time) / 4.0f + 0.75f;
-			glUniform4f(uniformLocation, 0.0f, redColor, 0.0f, 1.0f);
-			rectangle.Draw();
+			defaultProgram.Use();
+			triangle.Draw();
 
 			glfwSwapBuffers(window);
 			glfwPollEvents();
