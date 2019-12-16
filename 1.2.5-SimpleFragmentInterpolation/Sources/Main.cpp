@@ -59,7 +59,7 @@ int main(void)
 		glfwSetKeyCallback(window, keyCallback);
 		glfwSwapInterval(1);
 
-		VertexShader vertexShader(
+		VertexShader vertexShader(string(
 			"#version 330 core\n"
 			"layout (location = 0) in vec4 position;\n"
 			"layout (location = 1) in vec4 color;\n"
@@ -68,14 +68,12 @@ int main(void)
 			"{\n"
 			"	gl_Position = position;\n"
 			"	fragColor = color;\n"
-			"}\n"
-		);
-		FragmentShader fragmentShader(
+			"}\n"));
+		FragmentShader fragmentShader(string(
 			"#version 330 core\n"
 			"in vec4 fragColor;\n"
 			"out vec4 FragColor;\n"
-			"void main() { FragColor = fragColor; }\n"
-		);
+			"void main() { FragColor = fragColor; }\n"));
 		ShaderProgram defaultProgram(move(vertexShader), move(fragmentShader));
 		VAOTriangle triangle;
 

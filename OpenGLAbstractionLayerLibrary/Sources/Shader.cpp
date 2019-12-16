@@ -20,6 +20,10 @@ Shader::Shader(GLenum type, string&& source)
 	}
 }
 
+Shader::Shader(GLenum type, fs::path&& filepath)
+	: Shader(type, move(File::ReadAll(move(filepath))))
+{}
+
 Shader::~Shader()
 {
 	clog << "~Shader::dtor" << endl;

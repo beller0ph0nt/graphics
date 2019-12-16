@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\File.cpp" />
     <ClCompile Include="Sources\FragmentShader.cpp" />
     <ClCompile Include="Sources\Shader.cpp" />
     <ClCompile Include="Sources\ShaderProgram.cpp" />
@@ -154,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Include\Color.h" />
+    <ClInclude Include="Include\File.h" />
     <ClInclude Include="Include\FragmentShader.h" />
     <ClInclude Include="Include\Position.h" />
     <ClInclude Include="Include\Shader.h" />

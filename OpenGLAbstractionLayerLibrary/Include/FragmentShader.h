@@ -7,5 +7,6 @@ class FragmentShader : public Shader
 public:
 	FragmentShader();
 	FragmentShader(string&& source);
+	FragmentShader(fs::path&& filepath);
 	~FragmentShader();
 };

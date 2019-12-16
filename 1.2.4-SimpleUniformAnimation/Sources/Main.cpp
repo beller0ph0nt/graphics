@@ -56,11 +56,11 @@ int main(void)
 		glfwSetKeyCallback(window, keyCallback);
 		glfwSwapInterval(1);
 
-		ShaderProgram customProgram(FragmentShader(
+		ShaderProgram customProgram(FragmentShader(string(
 			"#version 330 core\n"
 			"out vec4 fragColor;\n"
 			"uniform vec4 externColor;"
-			"void main() { fragColor = externColor; }\n"));
+			"void main() { fragColor = externColor; }\n")));
 		GLint uniformLocation = glGetUniformLocation(customProgram.GetId(), "externColor");
 		VAORectangle rectangle;
 
