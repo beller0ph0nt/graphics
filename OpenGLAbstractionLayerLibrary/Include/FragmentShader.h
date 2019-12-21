@@ -8,5 +8,12 @@ public:
 	FragmentShader();
 	FragmentShader(string&& source);
 	FragmentShader(fs::path&& filepath);
+
+	FragmentShader(FragmentShader&& shader);
+	void operator=(FragmentShader&& shader);
+
+	FragmentShader(const FragmentShader& shader) = delete;
+	void operator=(const FragmentShader& shader) = delete;
+
 	~FragmentShader();
 };

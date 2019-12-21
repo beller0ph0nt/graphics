@@ -1,36 +1,51 @@
 #include "Shader.h"
 
-Shader::Shader(GLenum type, string&& source)
+Shader::Shader(Type type, string&& source)
+	: m_type(type), m_source(move(source))
 {
-	clog << "Shader::ctor" << endl;
-	_id = glCreateShader(type);
-	_source = source;
-	const char* src = _source.c_str();
-	glShaderSource(_id, 1, &src, NULL);
-	glCompileShader(_id);
+	m_id = glCreateShader(static_cast<GLenum>(m_type));
+	clog << "Shader::ctor id=" << m_id << endl;
+	const char* src = m_source.c_str();
+	glShaderSource(m_id, 1, &src, NULL);
+	glCompileShader(m_id);
 	GLint success;
-	glGetShaderiv(_id, GL_COMPILE_STATUS, &success);
+	glGetShaderiv(m_id, GL_COMPILE_STATUS, &success);
 	if (!success)
 	{
 		GLint len;
-		glGetShaderiv(_id, GL_INFO_LOG_LENGTH, &len);
+		glGetShaderiv(m_id, GL_INFO_LOG_LENGTH, &len);
 		auto log = make_unique<char[]>(len);
-		glGetShaderInfoLog(_id, len, NULL, log.get());
+		glGetShaderInfoLog(m_id, len, NULL, log.get());
 		throw exception(log.get());
 	}
 }
 
-Shader::Shader(GLenum type, fs::path&& filepath)
+Shader::Shader(Type type, fs::path&& filepath)
 	: Shader(type, move(File::ReadAll(move(filepath))))
 {}
 
+Shader::Shader(Shader&& shader)
+{
+	Shader::operator=(move(shader));
+}
+
+void Shader::operator=(Shader&& shader)
+{
+	m_id = shader.m_id;
+	m_type = shader.m_type;
+	m_source = shader.m_source;
+	shader.m_id = 0;
+	shader.m_type = Type::Unknown;
+	shader.m_source = "";
+}
+
 Shader::~Shader()
 {
-	clog << "~Shader::dtor" << endl;
-	glDeleteShader(_id);
+	clog << "~Shader::dtor id=" << m_id << endl;
+	glDeleteShader(m_id);
 }
 
 GLuint Shader::GetId() const
 { 
-	return _id; 
+	return m_id; 
 }

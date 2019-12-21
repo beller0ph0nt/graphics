@@ -12,35 +12,45 @@ ShaderProgram::ShaderProgram(FragmentShader&& fragmentShader)
 
 ShaderProgram::ShaderProgram(VertexShader&& vertexShader, FragmentShader&& fragmentShader)
 {
-	clog << "ShaderProgram::ctor" << endl;
-	_id = glCreateProgram();
-	glAttachShader(_id, vertexShader.GetId());
-	glAttachShader(_id, fragmentShader.GetId());
-	glLinkProgram(_id);
+	vector<Shader> shaders;
+	shaders.push_back(move(vertexShader));
+	shaders.push_back(move(fragmentShader));
+	ShaderProgram(move(shaders));
+}
+
+ShaderProgram::ShaderProgram(vector<Shader>&& shaders)
+{
+	m_id = glCreateProgram();
+	clog << "ShaderProgram::ctor id=" << m_id << endl;
+	for (int i = 0; i < shaders.size(); i++)
+	{
+		glAttachShader(m_id, shaders[i].GetId());
+	}
+	glLinkProgram(m_id);
 	GLint success;
-	glGetProgramiv(_id, GL_LINK_STATUS, &success);
+	glGetProgramiv(m_id, GL_LINK_STATUS, &success);
 	if (!success)
 	{
 		GLint len;
-		glGetProgramiv(_id, GL_INFO_LOG_LENGTH, &len);
+		glGetProgramiv(m_id, GL_INFO_LOG_LENGTH, &len);
 		auto log = make_unique<char[]>(len);
-		glGetProgramInfoLog(_id, len, NULL, log.get());
+		glGetProgramInfoLog(m_id, len, NULL, log.get());
 		throw exception(log.get());
 	}
 }
 
 ShaderProgram::~ShaderProgram()
 {
-	clog << "~ShaderProgram::dtor" << endl;
-	glDeleteProgram(_id);
+	clog << "~ShaderProgram::dtor id=" << m_id << endl;
+	glDeleteProgram(m_id);
 }
 
 GLuint ShaderProgram::GetId() const
 { 
-	return _id; 
+	return m_id; 
 }
 	
 void ShaderProgram::Use() const
 { 
-	glUseProgram(_id); 
+	glUseProgram(m_id); 
 }
