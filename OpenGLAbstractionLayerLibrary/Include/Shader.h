@@ -33,7 +33,7 @@ public:
 	Shader(const Shader& shader) = delete;
 	void operator=(const Shader& shader) = delete;
 	
-	~Shader();
+	virtual ~Shader();
 
 	GLuint GetId() const;
 private:

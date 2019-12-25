@@ -92,7 +92,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glew\include;$(ProjectDir)Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glew\include;$(ProjectDir)Include;$(SolutionDir)Dependencies\stb</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -105,7 +105,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glew\include;$(ProjectDir)Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glew\include;$(ProjectDir)Include;$(SolutionDir)Dependencies\stb</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -120,7 +120,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glew\include;$(ProjectDir)Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glew\include;$(ProjectDir)Include;$(SolutionDir)Dependencies\stb</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -137,7 +137,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glew\include;$(ProjectDir)Include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\glew\include;$(ProjectDir)Include;$(SolutionDir)Dependencies\stb</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -149,18 +149,22 @@
   <ItemGroup>
     <ClCompile Include="Sources\File.cpp" />
     <ClCompile Include="Sources\FragmentShader.cpp" />
+    <ClCompile Include="Sources\Image.cpp" />
     <ClCompile Include="Sources\Shader.cpp" />
     <ClCompile Include="Sources\ShaderProgram.cpp" />
+    <ClCompile Include="Sources\VertexBufferObject.cpp" />
     <ClCompile Include="Sources\VertexShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Include\Color.h" />
     <ClInclude Include="Include\File.h" />
     <ClInclude Include="Include\FragmentShader.h" />
+    <ClInclude Include="Include\Image.h" />
     <ClInclude Include="Include\Position.h" />
     <ClInclude Include="Include\Shader.h" />
     <ClInclude Include="Include\ShaderProgram.h" />
     <ClInclude Include="Include\Vertex.h" />
+    <ClInclude Include="Include\VertexBufferObject.h" />
     <ClInclude Include="Include\VertexShader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
