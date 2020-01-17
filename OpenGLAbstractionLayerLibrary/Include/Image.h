@@ -2,6 +2,7 @@
 
 #include <experimental\filesystem>
 
+using namespace std;
 namespace fs = std::experimental::filesystem;
 
 class Image
@@ -17,4 +18,8 @@ public:
 	
 	~Image();
 private:
+	int m_width;
+	int m_height;
+	int m_channels;
+	unsigned char *m_data;
 };
