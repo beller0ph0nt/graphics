@@ -1,6 +1,6 @@
 #include "VAOTriangle.h"
 
-VAOTriangle::VAOTriangle(GLuint attribIndex) : _attribIndex(attribIndex)
+VAOTriangle::VAOTriangle(GLuint attribIndex) : m_attribIndex(attribIndex)
 {
 	clog << "VAOTriangle::ctor" << endl;
 	glGenVertexArrays(1, &m_vertexArrayObjectId);
@@ -8,9 +8,9 @@ VAOTriangle::VAOTriangle(GLuint attribIndex) : _attribIndex(attribIndex)
 	glGenBuffers(1, &m_vertexBufferObjectId);
 	glBindBuffer(GL_ARRAY_BUFFER, m_vertexBufferObjectId);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(m_vertexes), m_vertexes.data(), GL_STATIC_DRAW);
-	glVertexAttribPointer(_attribIndex, sizeof(Position) / sizeof(float), GL_FLOAT,
+	glVertexAttribPointer(m_attribIndex, sizeof(Position) / sizeof(float), GL_FLOAT,
 		GL_FALSE, sizeof(Vertex), 0);
-	glEnableVertexAttribArray(_attribIndex);
+	glEnableVertexAttribArray(m_attribIndex);
 }
 
 VAOTriangle::~VAOTriangle()

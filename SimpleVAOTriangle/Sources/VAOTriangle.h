@@ -11,7 +11,7 @@ using namespace std;
 
 class VAOTriangle
 {
-	GLuint _attribIndex;
+	GLuint m_attribIndex;
 	GLuint m_vertexArrayObjectId;
 	GLuint m_vertexBufferObjectId;
 	array<Vertex, 3> m_vertexes{
