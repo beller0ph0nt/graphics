@@ -1,34 +1,30 @@
 #include "FragmentShader.h"
 
 FragmentShader::FragmentShader() :
-	FragmentShader(move(string(
+	FragmentShader(std::move(std::string(
 		"#version 330 core\n"
 		"out vec4 fragColor;\n"
 		"void main() { fragColor = vec4(1.0f, 1.0f, 1.0f, 1.0f); }\n")))
 {}
 
-FragmentShader::FragmentShader(string&& source) :
-	Shader(Shader::Type::Fragment, move(source))
-{
-	clog << "FragmentShader::ctor(source) id=" << GetId() << endl;
+FragmentShader::FragmentShader(std::string&& source)
+	: Shader(Shader::Type::Fragment, move(source)) {
+	std::clog << "FragmentShader::ctor(source) id=" << GetId() << std::endl;
 }
 
 FragmentShader::FragmentShader(fs::path&& filepath) :
-	Shader(Shader::Type::Fragment, move(filepath))
-{
-	clog << "FragmentShader::ctor(filepath) id=" << GetId() << endl;
+	Shader(Shader::Type::Fragment, std::move(filepath)) {
+	std::clog << "FragmentShader::ctor(filepath) id=" << GetId() << std::endl;
 }
 
 FragmentShader::FragmentShader(FragmentShader&& shader) :
-	Shader(move(shader))
+	Shader(std::move(shader))
 {}
 
-void FragmentShader::operator=(FragmentShader&& shader)
-{
-	Shader::operator=(move(shader));
+void FragmentShader::operator=(FragmentShader&& shader) {
+	Shader::operator=(std::move(shader));
 }
 
-FragmentShader::~FragmentShader()
-{ 
-	clog << "~FragmentShader::dtor id=" << GetId() << endl;
+FragmentShader::~FragmentShader() {
+	std::clog << "~FragmentShader::dtor id=" << GetId() << std::endl;
 }

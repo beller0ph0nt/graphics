@@ -3,8 +3,7 @@
 #include "Color.h"
 #include "Position.h"
 
-struct Vertex
-{
+struct Vertex {
 	Position pos;
 	Color color;
 };

@@ -8,13 +8,9 @@
 
 #include "File.h"
 
-using namespace std;
-
-class Shader
-{
+class Shader {
 public:
-	enum class Type : GLenum
-	{
+	enum class Type : GLenum {
 		Unknown = 0,
 		Compute = GL_COMPUTE_SHADER,
 		Vertex = GL_VERTEX_SHADER,
@@ -24,7 +20,7 @@ public:
 		Fragment = GL_FRAGMENT_SHADER
 	};
 
-	Shader(Type type, string&& source);
+	Shader(Type type, std::string&& source);
 	Shader(Type type, fs::path&& filepath);
 	
 	Shader(Shader&& shader);
@@ -39,5 +35,5 @@ public:
 private:
 	GLuint m_id;
 	Type m_type;
-	string m_source;
+	std::string m_source;
 };

@@ -6,12 +6,9 @@
 
 #include "Vertex.h"
 
-using namespace std;
-
-class VertexBufferObject
-{
+class VertexBufferObject {
 public:
-	VertexBufferObject(vector<Vertex>&& vertices);
+	VertexBufferObject(std::vector<Vertex>&& vertices);
 
 	VertexBufferObject(VertexBufferObject&& object);
 	VertexBufferObject(const VertexBufferObject& object) = delete;
@@ -22,5 +19,5 @@ public:
 	~VertexBufferObject();
 private:
 	GLuint m_id;
-	vector<Vertex> m_vertices;
+	std::vector<Vertex> m_vertices;
 };

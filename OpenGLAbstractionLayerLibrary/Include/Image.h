@@ -2,11 +2,9 @@
 
 #include <experimental\filesystem>
 
-using namespace std;
 namespace fs = std::experimental::filesystem;
 
-class Image
-{
+class Image {
 public:
 	Image(fs::path&& filePath);
 
@@ -21,5 +19,5 @@ private:
 	int m_width;
 	int m_height;
 	int m_channels;
-	unsigned char *m_data;
+	unsigned char* m_data;
 };

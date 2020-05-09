@@ -1,17 +1,16 @@
 #include "File.h"
 
-string File::ReadAll(fs::path&& path)
-{
-	stringstream ss;
+std::string File::ReadAll(fs::path&& path) {
+	std::stringstream ss;
 	try
 	{
-		ifstream file(path);
+		std::ifstream file(path);
 		file.exceptions(std::iostream::badbit | std::iostream::failbit);
 		ss << file.rdbuf();
 	}
-	catch (exception ex)
+	catch (std::exception& ex)
 	{
-		perror("errno: ");
+		perror("file read error");
 		throw ex;
 	}
 

@@ -2,11 +2,10 @@
 
 #include "Shader.h"
 
-class VertexShader : public Shader
-{
+class VertexShader : public Shader {
 public:
 	VertexShader();
-	VertexShader(string&& source);
+	VertexShader(std::string&& source);
 	VertexShader(fs::path&& filepath);
 
 	VertexShader(VertexShader&& shader);

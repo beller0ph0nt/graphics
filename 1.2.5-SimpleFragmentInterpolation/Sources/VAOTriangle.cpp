@@ -1,8 +1,7 @@
 #include "VAOTriangle.h"
 
-VAOTriangle::VAOTriangle()
-{
-	clog << "VAOTriangle::ctor" << endl;
+VAOTriangle::VAOTriangle() {
+	std::clog << "VAOTriangle::ctor" << std::endl;
 	glGenVertexArrays(1, &m_vertexArrayObjectId);
 	glBindVertexArray(m_vertexArrayObjectId);
 	glGenBuffers(1, &m_vertexBufferObjectId);
@@ -16,15 +15,13 @@ VAOTriangle::VAOTriangle()
 	glEnableVertexAttribArray(1);
 }
 
-VAOTriangle::~VAOTriangle()
-{
-	clog << "~VAOTriangle::dtor" << endl;
+VAOTriangle::~VAOTriangle() {
+	std::clog << "~VAOTriangle::dtor" << std::endl;
 	glDeleteBuffers(1, &m_vertexBufferObjectId);
 	glDeleteVertexArrays(1, &m_vertexArrayObjectId);
 }
 
-void VAOTriangle::Draw() const
-{
+void VAOTriangle::Draw() const {
 	glBindVertexArray(m_vertexArrayObjectId);
 	glDrawArrays(GL_TRIANGLES, 0, static_cast<GLsizei>(m_vertexes.size()));
 }

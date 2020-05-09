@@ -15,19 +15,15 @@
 
 #include "VAOTriangle.h"
 
-using namespace std;
-
-int main(void)
-{
-	try
-	{
+int main(void) {
+	try {
 		GLFWwindow* window;
 
-		if (!glfwInit())
+		if (!glfwInit()) {
 			return -1;
+		}
 		window = glfwCreateWindow(640, 480, "1.2.5-SimpleFragmentInterpolation", NULL, NULL);
-		if (!window)
-		{
+		if (!window) {
 			glfwTerminate();
 			return -1;
 		}
@@ -35,32 +31,34 @@ int main(void)
 		glfwMakeContextCurrent(window);
 
 		GLenum err = glewInit();
-		if (GLEW_OK != err)
-			cerr << "GLEW error: " << glewGetErrorString(err) << endl;
+		if (GLEW_OK != err) {
+			std::cerr << "GLEW error: " << glewGetErrorString(err) << std::endl;
+		}
 
-		cout << "glGetString:           " << glGetString(GL_VERSION) << endl;
-		cout << "glfwGetVersionString:  " << glfwGetVersionString() << endl;
-		cout << "glewGetString:         " << glewGetString(GLEW_VERSION) << endl;
+		std::cout << "glGetString:           " << glGetString(GL_VERSION) << std::endl;
+		std::cout << "glfwGetVersionString:  " << glfwGetVersionString() << std::endl;
+		std::cout << "glewGetString:         " << glewGetString(GLEW_VERSION) << std::endl;
 		int maxVertexAttributes;
 		glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &maxVertexAttributes);
-		cout << "GL_MAX_VERTEX_ATTRIBS: " << maxVertexAttributes << endl;
+		std::cout << "GL_MAX_VERTEX_ATTRIBS: " << maxVertexAttributes << std::endl;
 		
-		auto keyCallback = [](GLFWwindow* window, int key, int scancode, int action, int mods)
-		{
-			if (action == GLFW_PRESS)
-				if (key == GLFW_KEY_ESCAPE)
+		auto keyCallback = [](GLFWwindow* window, int key, int scancode, int action, int mods) {
+			if (action == GLFW_PRESS) {
+				if (key == GLFW_KEY_ESCAPE) {
 					glfwSetWindowShouldClose(window, true);
-				else if (key == GLFW_KEY_1)
+				} else if (key == GLFW_KEY_1) {
 					glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
-				else if (key == GLFW_KEY_2)
+				} else if (key == GLFW_KEY_2) {
 					glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-				else if (key == GLFW_KEY_3)
+				} else if (key == GLFW_KEY_3) {
 					glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+				}
+			}
 		};
 		glfwSetKeyCallback(window, keyCallback);
 		glfwSwapInterval(1);
 
-		VertexShader vertexShader(move(string(
+		VertexShader vertexShader(std::move(std::string(
 			"#version 330 core\n"
 			"layout (location = 0) in vec4 position;\n"
 			"layout (location = 1) in vec4 color;\n"
@@ -70,23 +68,22 @@ int main(void)
 			"	gl_Position = position;\n"
 			"	fragColor = color;\n"
 			"}\n")));
-		FragmentShader fragmentShader(move(string(
+		FragmentShader fragmentShader(std::move(std::string(
 			"#version 330 core\n"
 			"in vec4 fragColor;\n"
 			"out vec4 FragColor;\n"
 			"void main() { FragColor = fragColor; }\n")));
 
-		vector<Shader> shaders;
-		shaders.push_back(move(vertexShader));
-		shaders.push_back(move(fragmentShader));
+		std::vector<Shader> shaders;
+		shaders.push_back(std::move(vertexShader));
+		shaders.push_back(std::move(fragmentShader));
 
 		ShaderProgram defaultProgram(move(shaders));
 		VAOTriangle triangle;
 
 		glPointSize(5);
 		glClearColor(0.0f, 0.2f, 0.0f, 1.0f);
-		while (!glfwWindowShouldClose(window))
-		{
+		while (!glfwWindowShouldClose(window)) {
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			defaultProgram.Use();
@@ -97,11 +94,9 @@ int main(void)
 		}
 
 		glfwTerminate();
-	}
-	catch (exception ex)
-	{
-		cerr << ex.what() << endl;
-		cin.get();
+	} catch (std::exception ex) {
+		std::cerr << ex.what() << std::endl;
+		std::cin.get();
 		return EXIT_FAILURE;
 	}
 

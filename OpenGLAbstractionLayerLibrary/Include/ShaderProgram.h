@@ -5,14 +5,13 @@
 #include "VertexShader.h"
 #include "FragmentShader.h"
 
-class ShaderProgram
-{
+class ShaderProgram {
 public:
 	ShaderProgram();
 	ShaderProgram(VertexShader&& vertexShader);
 	ShaderProgram(FragmentShader&& fragmentShader);
 	ShaderProgram(VertexShader&& vertexShader, FragmentShader&& fragmentShader);
-	ShaderProgram(vector<Shader>&& shaders);
+	ShaderProgram(std::vector<Shader>&& shaders);
 	
 	~ShaderProgram();
 	

@@ -2,18 +2,15 @@
 
 #include <GLFW/glfw3.h>
 
-using namespace std;
-
-int main(void)
-{
+int main(void) {
 	GLFWwindow* window;
 
-	if (!glfwInit())
+	if (!glfwInit()) {
 		return -1;
+	}
 
 	window = glfwCreateWindow(640, 480, "1.1-SetupGLFW", NULL, NULL);
-	if (!window)
-	{
+	if (!window) {
 		glfwTerminate();
 		return -1;
 	}
@@ -21,11 +18,10 @@ int main(void)
 	glfwMakeContextCurrent(window);
 	glfwSwapInterval(1);
 
-	cout << "glGetString: " << glGetString(GL_VERSION) << endl;
-	cout << "glfwGetVersionString: " << glfwGetVersionString() << endl;
+	std::cout << "glGetString: " << glGetString(GL_VERSION) << std::endl;
+	std::cout << "glfwGetVersionString: " << glfwGetVersionString() << std::endl;
 
-	while (!glfwWindowShouldClose(window))
-	{
+	while (!glfwWindowShouldClose(window)) {
 		glClear(GL_COLOR_BUFFER_BIT);
 		glfwSwapBuffers(window);
 		glfwPollEvents();

@@ -1,8 +1,7 @@
 #include "VAORectangle.h"
 
-VAORectangle::VAORectangle(GLuint attribIndex) : m_attribIndex(attribIndex)
-{
-	clog << "VAORectangle::ctor" << endl;
+VAORectangle::VAORectangle(GLuint attribIndex) : m_attribIndex(attribIndex) {
+	std::clog << "VAORectangle::ctor" << std::endl;
 	glGenVertexArrays(1, &m_vertexArrayObjectId);
 	glBindVertexArray(m_vertexArrayObjectId);
 	glGenBuffers(1, &m_vertexBufferObjectId);
@@ -16,16 +15,14 @@ VAORectangle::VAORectangle(GLuint attribIndex) : m_attribIndex(attribIndex)
 	glEnableVertexAttribArray(m_attribIndex);
 }
 
-VAORectangle::~VAORectangle()
-{
-	clog << "~VAORectangle::dtor" << endl;
+VAORectangle::~VAORectangle() {
+	std::clog << "~VAORectangle::dtor" << std::endl;
 	glDeleteBuffers(1, &m_elementBufferObjectId);
 	glDeleteBuffers(1, &m_vertexBufferObjectId);
 	glDeleteVertexArrays(1, &m_vertexArrayObjectId);
 }
 
-void VAORectangle::Draw() const
-{
+void VAORectangle::Draw() const {
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_elementBufferObjectId);
 	glBindVertexArray(m_vertexArrayObjectId);
 	glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(m_indices.size()), GL_UNSIGNED_INT, 0);

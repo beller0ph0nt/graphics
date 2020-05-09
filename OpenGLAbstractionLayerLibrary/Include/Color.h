@@ -1,7 +1,6 @@
 #pragma once
 
-struct Color
-{
+struct Color {
 	float r;
 	float g;
 	float b;
