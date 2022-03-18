@@ -58,21 +58,28 @@ int main(void) {
 		glfwSetKeyCallback(window, keyCallback);
 		glfwSwapInterval(1);
 
-		VertexShader vertexShader(std::move(std::string(
-			"#version 330 core\n"
-			"layout (location = 0) in vec4 position;\n"
-			"layout (location = 1) in vec4 color;\n"
-			"out vec4 fragColor;\n"
-			"void main()\n"
-			"{\n"
-			"	gl_Position = position;\n"
-			"	fragColor = color;\n"
-			"}\n")));
-		FragmentShader fragmentShader(std::move(std::string(
-			"#version 330 core\n"
-			"in vec4 fragColor;\n"
-			"out vec4 FragColor;\n"
-			"void main() { FragColor = fragColor; }\n")));
+		VertexShader vertexShader(
+			std::move(std::string(
+				"#version 330 core\n"
+				"layout (location = 0) in vec4 position;\n"
+				"layout (location = 1) in vec4 color;\n"
+				"out vec4 fragColor;\n"
+				"void main()\n"
+				"{\n"
+				"	gl_Position = position;\n"
+				"	fragColor = color;\n"
+				"}\n")
+			)
+		);
+
+		FragmentShader fragmentShader(
+			std::move(std::string(
+				"#version 330 core\n"
+				"in vec4 fragColor;\n"
+				"out vec4 FragColor;\n"
+				"void main() { FragColor = fragColor; }\n")
+			)
+		);
 
 		std::vector<Shader> shaders;
 		shaders.push_back(std::move(vertexShader));

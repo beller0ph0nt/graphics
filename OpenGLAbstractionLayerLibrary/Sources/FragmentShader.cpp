@@ -1,10 +1,13 @@
 #include "FragmentShader.h"
 
 FragmentShader::FragmentShader() :
-	FragmentShader(std::move(std::string(
-		"#version 330 core\n"
-		"out vec4 fragColor;\n"
-		"void main() { fragColor = vec4(1.0f, 1.0f, 1.0f, 1.0f); }\n")))
+	FragmentShader(
+		std::move(std::string(
+			"#version 330 core\n"
+			"out vec4 fragColor;\n"
+			"void main() { fragColor = vec4(1.0f, 1.0f, 1.0f, 1.0f); }\n")
+		)
+	)
 {}
 
 FragmentShader::FragmentShader(std::string&& source)
