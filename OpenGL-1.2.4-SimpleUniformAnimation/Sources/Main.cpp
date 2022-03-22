@@ -21,7 +21,8 @@ int main(void) {
 		if (!glfwInit()) {
 			return -1;
 		}
-		window = glfwCreateWindow(640, 480, "1.2.4-SimpleUniformAnimation", NULL, NULL);
+
+		window = glfwCreateWindow(640, 480, "OpenGL-1.2.4-SimpleUniformAnimation", NULL, NULL);
 		if (!window) {
 			glfwTerminate();
 			return -1;
@@ -37,21 +38,23 @@ int main(void) {
 		std::cout << "glGetString:          " << glGetString(GL_VERSION) << std::endl;
 		std::cout << "glfwGetVersionString: " << glfwGetVersionString() << std::endl;
 		std::cout << "glewGetString:        " << glewGetString(GLEW_VERSION) << std::endl;
-		
-		auto keyCallback = [](GLFWwindow* window, int key, int scancode, int action, int mods) {
-			if (action == GLFW_PRESS) {
-				if (key == GLFW_KEY_ESCAPE) {
-					glfwSetWindowShouldClose(window, true);
-				} else if (key == GLFW_KEY_1) {
-					glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
-				} else if (key == GLFW_KEY_2) {
-					glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-				} else if (key == GLFW_KEY_3) {
-					glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+
+		glfwSetKeyCallback(
+			window,
+			[](GLFWwindow* window, int key, int scancode, int action, int mods) {
+				if (action == GLFW_PRESS) {
+					if (key == GLFW_KEY_ESCAPE) {
+						glfwSetWindowShouldClose(window, true);
+					} else if (key == GLFW_KEY_1) {
+						glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+					} else if (key == GLFW_KEY_2) {
+						glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+					} else if (key == GLFW_KEY_3) {
+						glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+					}
 				}
 			}
-		};
-		glfwSetKeyCallback(window, keyCallback);
+		);
 		glfwSwapInterval(1);
 
 		ShaderProgram customProgram(FragmentShader(std::move(std::string(

@@ -11,7 +11,7 @@ int main(void) {
 		return -1;
 	}
 
-	window = glfwCreateWindow(640, 480, "1.2.1-SimpleTriangle", NULL, NULL);
+	window = glfwCreateWindow(640, 480, "OpenGL-1.2.1-SimpleTriangle", NULL, NULL);
 	if (!window) {
 		glfwTerminate();
 		return -1;

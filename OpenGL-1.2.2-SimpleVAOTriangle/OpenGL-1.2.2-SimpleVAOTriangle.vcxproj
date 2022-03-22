@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{CBB4D778-9778-4BAF-BCAA-07DEDB10976B}</ProjectGuid>
+    <ProjectGuid>{10650B20-646A-427D-9272-3618B0C63E4F}</ProjectGuid>
     <RootNamespace>SimpleVAOTriangle</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>OpenGL-1.2.2-SimpleVAOTriangle</ProjectName>
