@@ -23,7 +23,7 @@
     <ProjectGuid>{CBB4D778-9778-4BAF-BCAA-07DEDB10976B}</ProjectGuid>
     <RootNamespace>SimpleVAOTriangle</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>1.2.2-SimpleVAOTriangle</ProjectName>
+    <ProjectName>OpenGL-1.2.2-SimpleVAOTriangle</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

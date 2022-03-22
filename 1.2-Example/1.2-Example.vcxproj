@@ -23,7 +23,7 @@
     <ProjectGuid>{3AEA5CE6-E810-4D53-AC66-D85C6FA0EE14}</ProjectGuid>
     <RootNamespace>My12Example</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>1.2.1-SimpleTriangle</ProjectName>
+    <ProjectName>OpenGL-1.2.1-SimpleTriangle</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

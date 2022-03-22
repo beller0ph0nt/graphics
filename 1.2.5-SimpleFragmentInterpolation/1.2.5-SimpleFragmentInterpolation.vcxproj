@@ -23,6 +23,7 @@
     <ProjectGuid>{FD49D4B1-F069-4643-856A-8F7F33307A1B}</ProjectGuid>
     <RootNamespace>My125SimpleFragmentInterpolation</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>OpenGL-1.2.5-SimpleFragmentInterpolation</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

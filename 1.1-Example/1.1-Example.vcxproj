@@ -23,7 +23,7 @@
     <ProjectGuid>{7366754B-9A7D-4ACF-9526-9A0E5E963F49}</ProjectGuid>
     <RootNamespace>My11Example</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>1.1-SetupGLFW</ProjectName>
+    <ProjectName>OpenGL-1.1-SetupGLFW</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
