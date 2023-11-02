@@ -1,0 +1,8 @@
+BasedOnStyle: WebKit
+
+Language: Cpp
+SortIncludes: CaseSensitive
+ColumnLimit: 80
+SeparateDefinitionBlocks: Always
+AlignAfterOpenBracket: BlockIndent
+AllowAllArgumentsOnNextLine: true
